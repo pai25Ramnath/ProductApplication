@@ -3,12 +3,15 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo Entered into build phase....
+      - echo Entered into build phase...
       - mvn clean package
+      - mkdir deployment
+      - cp target/demo.jar deployment/
+      - echo "web: java -jar demo.jar" > deployment/Procfile
   post_build:
-  commands:
-    - echo build completed successfully
+    commands:
+      - echo Build completed successfully
+      - cd deployment && zip -r ../springbootapp.zip .
 artifacts:
   files:
-    - target/demo.jar
-discard-paths: yes
+    - springbootapp.zip

@@ -6,8 +6,8 @@ phases:
       - echo Entered into build phase...
       - mvn clean package
       - mkdir deployment
-      - cp target/demo.jar deployment/
-      - echo "web: java -jar demo.jar" > deployment/Procfile
+      - cp target/spring-boot-docker.jar deployment/
+      - echo "web: java -jar spring-boot-docker.jar" > deployment/Procfile
   post_build:
     commands:
       - echo Build completed successfully

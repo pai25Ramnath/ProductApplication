@@ -24,7 +24,7 @@ public class ProductController {
 	@GetMapping({"","/"})
 	public String showProductList(Model model) {
 		List<Product> products=repo.findAll();
-		model.addAttribute("products", products);
+		model.addAttribute("productss", products);
 		return "products/index";
 	}
 	@GetMapping("/create")

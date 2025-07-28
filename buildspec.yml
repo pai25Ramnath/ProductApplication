@@ -5,13 +5,12 @@ phases:
     commands:
       - echo Entered into build phase...
       - mvn clean package
-      - mkdir deployment
-      - cp target/spring-boot-docker.jar deployment/
-      - echo "web: java -jar spring-boot-docker.jar" > deployment/Procfile
+      - cp target/spring-boot-docker.jar .
+      - echo web: java -jar spring-boot-docker.jar > Procfile
   post_build:
     commands:
       - echo Build completed successfully
-      - cd deployment && zip -r ../springbootapp.zip .
+      - zip springbootapp.zip spring-boot-docker.jar Procfile
 artifacts:
   files:
     - springbootapp.zip

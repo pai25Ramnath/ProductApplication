@@ -3,13 +3,13 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo Entered into build phase...
+      - echo Entered build phase
       - mvn clean package
       - cp target/spring-boot-docker.jar .
       - echo web: java -jar spring-boot-docker.jar > Procfile
   post_build:
     commands:
-      - echo Build completed successfully
+      - echo Build complete
       - zip springbootapp.zip spring-boot-docker.jar Procfile
 artifacts:
   files:
